@@ -12,9 +12,10 @@ from collections import namedtuple
 DEFAULT_CART_MASS = 0.31  # kg
 DEFAULT_POLE_MASS = 0.055  # kg
 DEFAULT_POLE_LENGTH = 0.4  # m
+DEFAULT_GRAVITY = 9.8
+
 
 # Constants not exposed for changing for now
-GRAVITY = 9.8  # a classic...
 FORCE_MAG = 1.0
 STEP_DURATION = 0.02  # seconds between state updates (20ms)
 TRACK_WIDTH = 2.0  # m
@@ -47,6 +48,7 @@ class CartPole:
 
     def reset(
         self,
+        cart_gravity: float = DEFAULT_GRAVITY,
         cart_mass: float = DEFAULT_CART_MASS,
         pole_mass: float = DEFAULT_POLE_MASS,
         pole_length: float = DEFAULT_POLE_LENGTH,
@@ -56,6 +58,7 @@ class CartPole:
         initial_angular_velocity: float = 0,
         target_pole_position: float = 0,
     ):
+        self._cart_gravity = cart_gravity  # (m/s)
         self._cart_mass = cart_mass  # (kg)
         self._pole_mass = pole_mass  # (kg)
         self._pole_length = pole_length  # (m)

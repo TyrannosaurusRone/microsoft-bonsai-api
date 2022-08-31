@@ -1,0 +1,8 @@
+
+Workspace name: bonsai
+Workspace ID: 03c7b7f7-8188-4298-9f4f-fd69c13d5e33
+Tenant ID: 6abe9a72-ce34-434e-bbf2-867c968fc2d7
+Subscription: 5e0ddecd-d459-435f-b781-dbbb13d6f9e9
+Resource group: bonsai-training
+Workspace ACR path: bonsai-rg-bonsai-03c7b7f7-8188-4298-9f4f-fd69c13d5e33
+ACCESS_KEY: ZDY5MzBjNmJlN2Q4NGRlOTg3N2M0YjhiMmZiNWY3MWM6YTI5ZGI5ODEtYzE2Yi00ZGUxLWIxODctNjZhZjBhY2Y5OWNm
