@@ -119,7 +119,7 @@ class TemplateSimulatorSession:
         Parameters
         ----------
         config : Dict, optional. The following keys are supported:
-            - cart_gravity   # (m/s)
+            - gravity   # (m/s)
             - cart_mass   # (kg)
             - pole_mass   # (kg)
             - pole_length  # (m)

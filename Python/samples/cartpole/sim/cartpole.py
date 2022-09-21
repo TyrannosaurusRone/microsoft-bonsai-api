@@ -44,11 +44,12 @@ class CartPole:
         self.reset(
             initial_pole_angle=random.uniform(-0.05, 0.05),
             initial_angular_velocity=random.uniform(-0.05, 0.05),
+            initial_gravity=random.uniform(5.0, 12.0)
         )
 
     def reset(
         self,
-        cart_gravity: float = DEFAULT_GRAVITY,
+        gravity: float = 9.8,
         cart_mass: float = DEFAULT_CART_MASS,
         pole_mass: float = DEFAULT_POLE_MASS,
         pole_length: float = DEFAULT_POLE_LENGTH,
@@ -58,7 +59,7 @@ class CartPole:
         initial_angular_velocity: float = 0,
         target_pole_position: float = 0,
     ):
-        self._cart_gravity = cart_gravity  # (m/s)
+        self._gravity = gravity  # (m/s)
         self._cart_mass = cart_mass  # (kg)
         self._pole_mass = pole_mass  # (kg)
         self._pole_length = pole_length  # (m)
@@ -109,7 +110,7 @@ class CartPole:
         temp = (
             force + pole_mass_length * self._pole_angular_velocity ** 2 * sinTheta
         ) / total_mass
-        angularAccel = (GRAVITY * sinTheta - cosTheta * temp) / (
+        angularAccel = (self._gravity * sinTheta - cosTheta * temp) / (
             pole_half_length
             * (4.0 / 3.0 - (self._pole_mass * cosTheta ** 2) / total_mass)
         )
@@ -132,6 +133,7 @@ class CartPole:
     @property
     def state(self):
         return {
+            "cart_gravity": self._gravity,
             "cart_position": self._cart_position,
             "cart_velocity": self._cart_velocity,
             "pole_angle": self._pole_angle,

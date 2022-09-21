@@ -12,6 +12,7 @@ const MaxPosition = TrackLength / 2
 
 # These are all the values the sim produces
 type SimState {
+    gravity: number, # (m/s)
     cart_position: number,  # (m). 0 is the center of the track
     cart_velocity: number,  # (m/s)
     pole_angle: number,  # (rad). 0 is vertical.
@@ -29,6 +30,7 @@ type SimState {
 # This is a subset of the SimState that we'll make available to the brain
 # (these should all be values that will be available to a deployed brain)
 type ObservedState {
+    gravity: number, # (m/s)
     cart_position: number,  # (m). 0 is the center of the track
     cart_velocity: number,  # (m/s)
     pole_angle: number,  # (rad). 0 is vertical.
@@ -42,6 +44,7 @@ type Action {
 
 # Configuration variables for the simulator
 type SimConfig {
+    gravity: number,  # (m/s), default 9.8
     cart_mass: number,  # (kg), default 0.31
     pole_mass: number,  # (kg), default 0.055
     pole_length: number,  # (m), default 0.4
@@ -56,6 +59,7 @@ graph (input: ObservedState): Action {
     concept BalancePole(input): Action {
         curriculum {
             source simulator (Action: Action, Config: SimConfig): SimState {
+                package "gravity-cartpole-sim"
             }
             training {
                 EpisodeIterationLimit: 200,
